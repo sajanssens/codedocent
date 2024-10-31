@@ -8,24 +8,22 @@ public class Demo {
 
     /*
         1. Use existing
-            a. generic class by
-                - instantiating it
-                - extending it
-            b. generic method by
-                - calling it
+            a. generic class by instantiating it
+            b. generic class by extending it
+            c. generic method by calling it
      */
 
     public static void main(String[] args) {
         useRawTypes();
 
-        // 1a1
+        // 1a
         // useGenericClass();
 
-        // 1a2
+        // 1b
         // extendGenericClass();
 
-        // 1b
-        callGenericMethod();
+        // 1c
+        // callGenericMethod();
     }
 
     private static void useRawTypes() {
@@ -77,8 +75,10 @@ public class Demo {
 
         // addAll works on ... any type!
 
-        // how does it know the actual type for each call?
-        // i.e. where's the type argument?
+        // Where's the type argument?
+        // We may specify it, but the compiler can always infer it from the argument(s):
         Collections.<Integer>addAll(ints, 5, 6, 7);
+        //           ^^^^^^ = type argument
+
     }
 }

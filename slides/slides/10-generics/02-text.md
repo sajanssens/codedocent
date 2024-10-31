@@ -46,13 +46,11 @@ For example a <!-- .element: class="fragment" --> `List`.
 
 ### Generics in Java
 1. Use <!-- .element: class="fragment" -->_existing_ 
-   - generic **class** by
-     - instantiating it
-     - extending it
-   - generic **method** by
-     - calling it
-2. Declare <!-- .element: class="fragment" -->_your own_
-   - generic **class**
-   - generic **method**
+   - generic **class** by instantiating it
+   - generic **class** by extending it      
+   - generic **method** by calling it
+2. Create <!-- .element: class="fragment" -->_new_
+   - generic **class** by declaring it
+   - generic **method** by declaring it
 
 Let's dive into some code... <!-- .element: class="fragment" -->
