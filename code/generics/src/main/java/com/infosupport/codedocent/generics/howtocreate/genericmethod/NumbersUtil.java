@@ -17,4 +17,27 @@ public class NumbersUtil {
                 .toList()
                 .size();
     }
+
+    //             T may be any type, e.g. Integer, String, Person, ...
+    public static <T> void append(
+            List<T> source,
+            List<T> destination) {
+        for (T item : source) {
+            destination.add(item);
+        }
+    }
+
+    //             T must be at least a Number (i.e. Number, Integer, Float, ...)
+    public static <T extends Number> void appendNumbers(
+            List<? extends T> source,   // must be a list instance of at least Number (Number or sub)
+            List<? super T> destination // must be a list instance of at most Number  (Number or super)
+    ) {
+        for (T item : source) {
+            destination.add(item);
+        }
+    }
+
+    public static <T> void addNewEmptyItem(List<T> source) {
+        // destination.add(new T()); // doesn't work. Why?
+    }
 }

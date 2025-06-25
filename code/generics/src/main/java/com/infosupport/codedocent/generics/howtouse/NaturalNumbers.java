@@ -6,12 +6,18 @@ import java.util.ArrayList;
 public class NaturalNumbers extends ArrayList<Integer> {
 
     public NaturalNumbers() {
-        for (int i = 1; i <= 3; i++) { add(i); }
+        this(3);
+    }
+
+    public NaturalNumbers(int n) {
+        for (int i = 1; i <= n; i++) { add(i); }
     }
 
     public int sumFirstLast() {
         return getFirst() + getLast();
     }
 
-    public void printAll() { forEach(System.out::println); }
+    public void printAll() {
+        forEach(System.out::println);
+    }
 }
