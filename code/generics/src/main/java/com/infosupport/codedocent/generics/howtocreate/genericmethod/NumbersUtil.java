@@ -18,7 +18,7 @@ public class NumbersUtil {
                 .size();
     }
 
-    //             T may be any type, e.g. Integer, String, Person, ...
+    //             T may be any type, e.g., Integer, String, Person, ...
     public static <T> void append(
             List<T> source,
             List<T> destination) {
@@ -27,7 +27,7 @@ public class NumbersUtil {
         }
     }
 
-    //             T must be at least a Number (i.e. Number, Integer, Float, ...)
+    //             T must be at least a Number (i.e., Number, Integer, Float, ...)
     public static <T extends Number> void appendNumbers(
             List<? extends T> source,   // must be a list instance of at least Number (Number or sub)
             List<? super T> destination // must be a list instance of at most Number  (Number or super)
