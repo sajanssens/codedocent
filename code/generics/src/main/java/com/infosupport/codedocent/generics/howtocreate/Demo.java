@@ -26,13 +26,13 @@ public class Demo {
 
     public static void main(String[] args) {
         // 2a
-        useNewGenericClass();
+        useNewlyCreatedGenericClass();
 
         // 2b
-        useNewGenericMethod();
+        useNewlyCreatedGenericMethod();
     }
 
-    private static void useNewGenericClass() {
+    private static void useNewlyCreatedGenericClass() {
         // Non-generic Box:
         // Box b = new Box();
         // b.setValue(1); // b.setValue("a");   // b.setValue("a");
@@ -57,7 +57,7 @@ public class Demo {
         // System.out.println(value);
     }
 
-    private static void useNewGenericMethod() {
+    private static void useNewlyCreatedGenericMethod() {
         naturalNumbers.printAll();
 
         // Easy use cases: ------------
