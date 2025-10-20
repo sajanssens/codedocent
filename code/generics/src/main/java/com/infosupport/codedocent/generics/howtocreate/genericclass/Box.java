@@ -1,15 +1,15 @@
 package com.infosupport.codedocent.generics.howtocreate.genericclass;
 
-public class Box {
+//              vvv type parameter
+public class Box<T> {
 
-    private Object value;
+    private T value;
 
-    public void setValue(Object value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public Object getValue() {
+    public T getValue() {
         return value;
     }
-
 }
