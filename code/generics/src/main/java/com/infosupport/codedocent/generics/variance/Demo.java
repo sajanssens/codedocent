@@ -5,24 +5,43 @@ import java.util.List;
 public class Demo {
 
     void main() {
-        Finance old = new Finance();
+        Person p = new Person();
         Employee e = new Employee();
         Developer d = new Developer();
+        List<Person> persons = List.of(p);
         List<Employee> employees = List.of(e);
         List<Developer> developers = List.of(d);
 
-        old.pay(e);
-        old.pay(d);
+        Finance traditional = new Finance();
 
-        old.payAll(employees);
-        // old.payAll(developers);
+        traditional.pay(p);             // regular sub typing
+        traditional.pay(e);
+        traditional.pay(d);
 
-        FinanceAgile modern = new FinanceAgile();
-        modern.payAll(employees);
-        modern.payAll(developers);
+        traditional.payAll(persons);    // in variant
+        traditional.payAll(employees);
+        traditional.payAll(developers);
 
+        traditional.scaleUp(persons);   // in variant
+        traditional.scaleUp(employees);
+        traditional.scaleUp(developers);
 
+        traditional.scaleUpWith(employees, developers);   // in variant
 
+        FinanceAgile agile = new FinanceAgile();
 
+        agile.pay(p);          // regular sub typing
+        agile.pay(e);
+        agile.pay(d);
+
+        agile.payAll(persons); // co variant
+        agile.payAll(employees);
+        agile.payAll(developers);
+
+        agile.scaleUp(persons);   // contra variant
+        agile.scaleUp(employees);
+        agile.scaleUp(developers);
+
+        agile.scaleUpWith(employees, developers); // contra & co
     }
 }

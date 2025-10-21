@@ -14,20 +14,17 @@ public class FinanceAgile {
     }
 
     public void scaleUp(List<? super Employee> team) {
-        for (Object o : team) {
+        for (Object o : team) {   // read Object
             log(o);
         }
-        team.add(new Employee());
+        team.add(new Employee()); // write Employee
         team.add(new Developer());
         team.add(new ProductOwner());
     }
 
-    public void moveAllStars(List<? extends Employee> fromTeam, List<? super Employee> toTeam) {
-        for (Employee employee : fromTeam) {
-            if (employee.getLevel() >= 10) {
-                fromTeam.remove(employee);
-                toTeam.add(employee);
-            }
+    public void scaleUpWith(List<? super Employee> team, List<? extends Employee> source) {
+        for (Employee e : source) { // read Employee
+            team.add(e);            // write Employee
         }
     }
 
