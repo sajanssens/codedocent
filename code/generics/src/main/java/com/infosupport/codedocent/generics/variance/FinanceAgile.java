@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FinanceAgile {
 
-    public void pay(Employee e) { }
+    public void pay(Employee e) { e.pay(); }
 
     public void payAll(List<? extends Employee> employees) {
         for (Employee e : employees) {
