@@ -43,38 +43,21 @@ One-to-**many** relationship. <!-- .element: class="fragment" -->
 ---
 
 ### Sub 🚇
-Are _**sub**class_ and _**sub**type_ the same thing?
+So a class and a type are not the same.
+
+What about _**sub**class_ and _**sub**type_?
 
 ---
 
-### Subtypes
+### Subtypes 🚇
 
-In Java, you can create a subtype by creating a subclass, for example:
+In Java, you can create a sub**class** like this:
 ```java
 class Developer extends Employee { /* ... */ }
 ```
 
----
+- Does this also make `Developer` a sub**type** of `Employee`?  
 
-### Subtypes
-
-- Given this method:
-    ```java
-    class Finance {  
-       void pay(Employee e) { /*...*/ }	
-    }
-    ```
-- Are these calls allowed? <!-- .element: class="fragment" -->
-	```java
-    f.pay(anEmployee);
-    f.pay(aDeveloper);
-    ```
-- Yes ✅! <!-- .element: class="fragment" --> 
-- So: <!-- .element: class="fragment" -->
-  - `Developer` is a subtype of `Employee`:
-     ```console
-     Developer <: Employee
-     ```` 
 ---
 
 ### Subtypes
@@ -84,6 +67,28 @@ It's <!-- .element: class="fragment" -->about **substitutability**.
 
 ![](../../img/liskov.jpg)
 <!-- .element: class="fragment" -->
+
+---
+
+### Subtypes
+Is `Developer` a sub**type** of `Employee`?
+
+- Given this method:
+    ```java
+    class Finance {  
+       void pay(Employee e) { /*...*/ }	
+    }
+    ```
+- Are these calls allowed? <!-- .element: class="fragment" -->
+	```java
+    f.pay(anEmployee); 
+    f.pay(aDeveloper);
+    ```
+- Yes ✅! <!-- .element: class="fragment" --> 
+- So <!-- .element: class="fragment" --> `Developer` is a subtype of `Employee`: 
+	```console
+	Developer <: Employee
+	```` 
 
 ---
  

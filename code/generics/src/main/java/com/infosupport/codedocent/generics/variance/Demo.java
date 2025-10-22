@@ -27,6 +27,7 @@ public class Demo {
         traditional.scaleUp(developers);
 
         traditional.scaleUpWith(employees, developers);   // in variant
+        traditional.scaleUpWith(persons, developers);     // in variant
 
         FinanceAgile agile = new FinanceAgile();
 
@@ -43,5 +44,6 @@ public class Demo {
         agile.scaleUp(developers);
 
         agile.scaleUpWith(employees, developers); // contra & co
+        agile.scaleUpWith(persons, developers); // contra & co
     }
 }

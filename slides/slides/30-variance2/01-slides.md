@@ -5,17 +5,17 @@
 ---
 
 ### Variance
-- Given the generic type `C<T>`
-  - `C` is a _container_ for `T`.
+- Given the generic type `List<T>`
+  - `List` is a _container_ for `T`'s.
 
 > How does a generic type behave when used as a method parameter?
 
 ---
  
 ### Subtypes and generics
-Given: `Developer` is a subtype of `Employee`.
+Given: `Developer` is a sub**type** of `Employee`.
 
-Question: is `List<Developer>` is a subtype of `List<Employee>` too?
+Question: is `List<Developer>` a sub**type** of `List<Employee>` too?
 
 ---
 
@@ -32,24 +32,22 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
     f.payAll(employees);  // employees is a  List<Employee>
     f.payAll(developers); // developers is a List<Developers>
     ```
-   - Your gut feeling says..?
+   - Your gut feeling says...? <!-- .element: class="fragment" -->
 - No ❌! The second call gives: <!-- .element: class="fragment" -->
   ```console
-  java: incompatible types: 
-     java.util.List<Developer> cannot be converted to 
-     java.util.List<Employee>
+  incompatible types: 
+     List<Developer> cannot be converted to List<Employee>
   ```
 - So: <!-- .element: class="fragment" -->
   - `List<Developer>` is NOT a subtype of `List<Employee>`!	
   - `List<T>` is **invariant**
-
 
 ---
 
 ### Subtypes and generics
 - Why is that?  
 - Because <!-- .element: class="fragment" --> we can **do things** with the contents: 
-	```java [2|6]
+	```java [2|6|]
 	void payAll(List<Employee> es) {
  		for (Employee e : es) {     // read Employee ✅
  			e.pay();    
@@ -58,7 +56,7 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 		es.add(new ProductOwner());  // write Employee ✅
 	}
 	```
-   - perfectly valid code in this context... <!-- .element: class="fragment" -->
+   - perfectly <!-- .element: class="fragment" --> valid code _in this context_ 
 - If <!-- .element: class="fragment" --> calling `f.payAll(developers)` was allowed...
   - ... a <!-- .element: class="fragment" --> `ProductOwner` could get added to a group of developers!
   - ... would <!-- .element: class="fragment" --> generate a lot of spaghetti 🍝🍝🍝🍝
@@ -69,7 +67,7 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 - But developers need their salary too... 🍕🍕🍕
 - So in <!-- .element: class="fragment" --> **this** case
   - we want to be able to **pass employees and developers**
-  - we don't care that we can't **write** to the list
+  - we don't need to **write** to the list
   - we want `List<Developer>` to be a subtype of `List<Employee>`
 
 ---
@@ -86,7 +84,7 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 	}
 	```
 - As <!-- .element: class="fragment" --> a consequence
-  - write is _not_ allowed anymore, `es` is producing only
+  - write is _not_ allowed anymore
   - these <!-- .element: class="fragment" --> calls _are_ allowed now: 
       ```java
       f.payAll(employees);   ✅
@@ -99,10 +97,10 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 ---
 
 ### Contravariant
-- We can also make the parameter type _contravariant_
+- We can make the parameter type _contravariant_ too:
 	```java [1|2|6|]
 	void scaleUp(List<? super Employee> team) { 
-		for (Object o : team) {        // read Employee ❌ (Object ✅)
+		for (Object o : team) {        // read Employee ❌
 			log(o.toString());
 		}	   		
 	
@@ -110,7 +108,7 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 	}
 	```
 - As <!-- .element: class="fragment" --> a consequence 
-  - we read an `Object`, not an `Employee`
+  - we read an `Object`, not an `Employee` (could be anything)
   - these <!-- .element: class="fragment" --> calls _are_ allowed now:
       ```java
       f.scaleUp(objects);     ✅
@@ -121,14 +119,16 @@ Question: is `List<Developer>` is a subtype of `List<Employee>` too?
 - the parameter <!-- .element: class="fragment" --> `team` is 
   - **consuming** content
   - **at least** a list of employees or more general
+
 ---
 
-### Contravariant
-- A team doesn't only contain `Employee`s but also more general `Person`s, like temporary employees.
+### Subtypes and generics
+- We wanted to scale up a team: add new members. 🧑🏼‍💻👨🏼‍💻👩🏼‍💻
+  - A team can contain `Employee`s but also more general `Person`s, like temporary employees.
 - So in <!-- .element: class="fragment" --> **this** case
-  - we wanted to be able to **pass employees and persons**
-  - we didn't care that we couldn't **read** them as `Employee` from the list
-
+  - we can pass **employees** ánd **persons**
+  - we can **write** to those collections
+  
 ---
 
 ### Overview in code 
@@ -142,6 +142,11 @@ Invariant
 Co- and contravariant
 
 ![](../../img/agile.png)
+
+---
+
+### Co and contra combined
+Demo `scaleUpWith`.
 
 ---
 

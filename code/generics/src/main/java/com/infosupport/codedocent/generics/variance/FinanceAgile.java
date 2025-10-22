@@ -2,6 +2,8 @@ package com.infosupport.codedocent.generics.variance;
 
 import java.util.List;
 
+import static java.lang.IO.println;
+
 public class FinanceAgile {
 
     public void pay(Employee e) { e.pay(); }
@@ -28,7 +30,5 @@ public class FinanceAgile {
         }
     }
 
-    private void log(Object o) {
-        System.out.println(o);
-    }
+    private void log(Object o) { println(o); }
 }
