@@ -26,9 +26,9 @@ public class Demo {
         traditional.scaleUp(employees);
         traditional.scaleUp(developers);
 
-        traditional.scaleUpWith(employees, developers);   // in variant
         traditional.scaleUpWith(persons, developers);     // in variant
 
+        // -------------------------------------------------------------
         FinanceAgile agile = new FinanceAgile();
 
         agile.pay(p);          // regular sub typing
@@ -43,7 +43,6 @@ public class Demo {
         agile.scaleUp(employees);
         agile.scaleUp(developers);
 
-        agile.scaleUpWith(employees, developers); // contra & co
-        agile.scaleUpWith(persons, developers); // contra & co
+        agile.scaleUpWith(persons, employees); // contra & co
     }
 }
