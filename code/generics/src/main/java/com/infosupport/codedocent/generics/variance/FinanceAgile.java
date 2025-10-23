@@ -6,6 +6,10 @@ import static java.lang.IO.println;
 
 public class FinanceAgile {
 
+    public FinanceAgile(String forAllKindsOfPersonell) {
+
+    }
+
     public void pay(Employee e) { e.pay(); }
 
     public void payAll(List<? extends Employee> employees) {

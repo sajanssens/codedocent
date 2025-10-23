@@ -8,41 +8,35 @@ public class Demo {
         Person p = new Person();
         Employee e = new Employee();
         Developer d = new Developer();
+        List<Object> objects = List.of();
         List<Person> persons = List.of(p);
         List<Employee> employees = List.of(e);
         List<Developer> developers = List.of(d);
 
-        Finance traditional = new Finance();
+        Finance trad = new Finance("only for employees");
 
-        traditional.pay(p);             // regular sub typing
-        traditional.pay(e);
-        traditional.pay(d);
+        // regular   invariant                 invariant
+        trad.pay(p); trad.payAll(persons);     trad.scaleUp(persons);
+        trad.pay(e); trad.payAll(employees);   trad.scaleUp(employees);
+        trad.pay(d); trad.payAll(developers);  trad.scaleUp(developers);
 
-        traditional.payAll(persons);    // in variant
-        traditional.payAll(employees);
-        traditional.payAll(developers);
-
-        traditional.scaleUp(persons);   // in variant
-        traditional.scaleUp(employees);
-        traditional.scaleUp(developers);
-
-        traditional.scaleUpWith(persons, developers);     // in variant
+        // invariant
+        trad.scaleUpWith(persons, employees);
 
         // -------------------------------------------------------------
-        FinanceAgile agile = new FinanceAgile();
 
-        agile.pay(p);          // regular sub typing
-        agile.pay(e);
-        agile.pay(d);
+        FinanceAgile agile = new FinanceAgile("for every kind of person");
 
-        agile.payAll(persons); // co variant
-        agile.payAll(employees);
-        agile.payAll(developers);
+        // regular    co (same)                  contra (opposite)
+        agile.pay(p); agile.payAll(persons);     agile.scaleUp(persons);
+        agile.pay(e); agile.payAll(employees);   agile.scaleUp(employees);
+        agile.pay(d); agile.payAll(developers);  agile.scaleUp(developers);
 
-        agile.scaleUp(persons);   // contra variant
-        agile.scaleUp(employees);
-        agile.scaleUp(developers);
+        // contra & co
+        //                ? >= E     ? <= E
+        agile.scaleUpWith(objects,   employees);
+        agile.scaleUpWith(employees, employees);
+        agile.scaleUpWith(persons,   developers);
 
-        agile.scaleUpWith(persons, employees); // contra & co
     }
 }

@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Finance {
 
+    public Finance(String onlyForEmployees) {
+
+    }
+
     public void pay(Employee e) { e.pay(); }
 
     public void payAll(List<Employee> employees) {
